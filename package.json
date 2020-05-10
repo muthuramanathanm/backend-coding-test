@@ -11,7 +11,7 @@
     "start": "node index.js",
     "lint": "eslint \"**/*.js\" -f table",
     "coverage": "nyc npm run test",
-    "prepush": "npm run lint && npm run coverage"
+    "prepush": "npm run coverage"
   },
   "keywords": [
     "Xendit"
