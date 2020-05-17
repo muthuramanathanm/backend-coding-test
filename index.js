@@ -12,6 +12,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database(':memory:');
 
 const buildSchemas = require('./src/schemas');
+const dbOps = require('./src/readWrites');
 
 db.serialize(() => {
     buildSchemas(db);
