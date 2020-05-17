@@ -1,0 +1,31 @@
+config:
+  target: 'http://localhost:8010'
+  phases:
+    - duration: 30
+      arrivalRate: 50
+  ensure:
+    p99: 50
+scenarios:
+  - flow:
+      - post:
+          url: "/rides"
+          json:
+            rideID: 16
+            startLat: 50
+            startLong: 100
+            endLat: 80
+            endLong: 140
+            riderName: "rider3"
+            driverName: "muthu"
+            driverVehicle: "toyota"
+            created: "2020-05-16 05:42:21"
+      - loop:
+        - get:
+            url: "/rides"
+        count: 3
+      - get:
+          url: "/rides"
+      - loop:
+        - get:
+            url: "/rides"
+        

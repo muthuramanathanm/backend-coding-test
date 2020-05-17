@@ -1,5 +1,6 @@
 'use strict';
 
+const logger = require('./lib/logger/logger');
 const express = require('express');
 const app = express();
 const port = 8010;
@@ -15,9 +16,7 @@ const dbOps = require('./src/readWrites');
 
 db.serialize(() => {
     buildSchemas(db);
-    // dbOps(db);
-
     const app = require('./src/app')(db);
-    console.log('Hello...');
-    app.listen(port, () => console.log(`App started and listening on port ${port}`));
+    app.listen(port, () => logger.log(`App started and listening on port ${port}`));
+
 });
